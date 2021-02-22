@@ -5,8 +5,9 @@ let headerButton = document.querySelector('.header-button');
 let headerInput = document.querySelector('.header-input');
 let list = document.querySelector('.todo-list');
 let listComleted = document.querySelector('.todo-completed');
-let todoComleteBtn = document.querySelector('.todo-complete');
-let todoItem = document.querySelectorAll('.todo-item');
+
+let toDoArr = ['Сварить кофе', 'Помыть посуду'];
+
 
 // функция возвращает новый элемент
 function createElement(evt){
@@ -20,7 +21,28 @@ function createElement(evt){
 				'<button class="todo-complete"></button>' +
 			    '</div>';
     headerInput.value = '';
-    list.append(newElement);    
+    list.append(newElement);
+
+    toDoArr.push(newElement);   
+   
 }
-}  
+    let todoItem = list.querySelectorAll('.todo-item');
+    let todoComleteBtn = list.querySelectorAll('.todo-complete');
+    for(let i = 0; i < todoItem.length; i++){
+        todoComleteBtn[i].addEventListener('click', function(){
+            listComleted.append(todoItem[i]);
+        });
+    }
+}
+
 todoControl.addEventListener('submit', createElement);
+
+// удаляет элемент
+function delElement() {
+    let todoRemoveBtn = document.querySelectorAll('.todo-remove');
+    for (let i = 0; i < toDoArr.length; i++) {
+      todoRemoveBtn[i].addEventListener('click', function(){
+        delete toDoArr[i];
+      });
+    }
+}
