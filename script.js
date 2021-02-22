@@ -5,7 +5,7 @@ let headerButton = document.querySelector('.header-button');
 let headerInput = document.querySelector('.header-input');
 let list = document.querySelector('.todo-list');
 let listComleted = document.querySelector('.todo-completed');
-
+let todoItem = list.querySelectorAll('.todo-item');
 let toDoArr = ['Сварить кофе', 'Помыть посуду'];
 
 
@@ -23,7 +23,7 @@ function createElement(evt){
     headerInput.value = '';
     list.append(newElement);
 
-    toDoArr.push(newElement);   
+    toDoArr.push(newElement.outerText);   
    
 }
     let todoItem = list.querySelectorAll('.todo-item');
@@ -33,16 +33,25 @@ function createElement(evt){
             listComleted.append(todoItem[i]);
         });
     }
+    
 }
 
 todoControl.addEventListener('submit', createElement);
 
-// удаляет элемент
-function delElement() {
+
+function del(){
     let todoRemoveBtn = document.querySelectorAll('.todo-remove');
-    for (let i = 0; i < toDoArr.length; i++) {
-      todoRemoveBtn[i].addEventListener('click', function(){
-        delete toDoArr[i];
-      });
-    }
+for(let i = 0; i < todoItem.length; i++){
+    todoRemoveBtn[i].addEventListener('click', function(){
+    todoItem[i].parentNode.removeChild(todoItem[i]);
+});
 }
+}
+del();
+
+
+    
+
+
+
+   
