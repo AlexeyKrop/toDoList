@@ -10,7 +10,9 @@ let toDoArr = [
 ];    
 
 let addToDo = function(){
-    toDoArr = JSON.parse(localStorage.getItem('value'));
+    if (localStorage.getItem('value')){
+        toDoArr = JSON.parse(localStorage.getItem('value'));
+    }
     todoList.textContent = '';
     todoCompleted.textContent = '';
     headerInput.value = '';
