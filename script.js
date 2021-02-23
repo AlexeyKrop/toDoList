@@ -10,6 +10,7 @@ let toDoArr = [
 ];    
 
 let addToDo = function(){
+    toDoArr = JSON.parse(localStorage.getItem('value'));
     todoList.textContent = '';
     todoCompleted.textContent = '';
     headerInput.value = '';
@@ -39,19 +40,10 @@ let addToDo = function(){
 
         let todoRemoveBtn = li.querySelector('.todo-remove');
         todoRemoveBtn.addEventListener('click', function(){
-            li.remove(li);
+            li.remove(li);           
         });
     });
-    // преобразовываю массив в формат json
-    let jsonToDoArr = JSON.stringify(toDoArr); 
-    // записываю значени в localStorage
-    localStorage.value = jsonToDoArr;
-    // преобразовываю из json в массив
-    jsonToDoArr = JSON.parse(jsonToDoArr);
-   
 };
-
-
 
 todoControl. addEventListener('submit', function(event){
     event.preventDefault();
@@ -61,9 +53,11 @@ todoControl. addEventListener('submit', function(event){
         completed: false,
         };
         toDoArr.push(newToDo);
+        localStorage.setItem('value', JSON.stringify(toDoArr));
     }
     addToDo();
 });
+addToDo();
 
 
 
