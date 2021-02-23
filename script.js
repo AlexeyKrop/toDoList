@@ -42,7 +42,13 @@ let addToDo = function(){
             li.remove(li);
         });
     });
-
+    // преобразовываю массив в формат json
+    let jsonToDoArr = JSON.stringify(toDoArr); 
+    // записываю значени в localStorage
+    localStorage.value = jsonToDoArr;
+    // преобразовываю из json в массив
+    jsonToDoArr = JSON.parse(jsonToDoArr);
+   
 };
 
 
