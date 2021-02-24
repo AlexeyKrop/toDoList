@@ -34,15 +34,18 @@ let addToDo = function(){
         toDoCompleteBtn.addEventListener('click', function(){
             item.completed = !item.completed;
              if(item.completed){
-          todoCompleted.append(li);  
+          todoCompleted.append(li);
+          localStorage.setItem('value', JSON.stringify(toDoArr)); 
         } else{
             todoList.append(li);
+            localStorage.setItem('value', JSON.stringify(toDoArr)); 
         }  
         });
 
         let todoRemoveBtn = li.querySelector('.todo-remove');
         todoRemoveBtn.addEventListener('click', function(){
-            li.remove(li);           
+            li.remove(li);
+            localStorage.removeItem('value');
         });
     });
 };
